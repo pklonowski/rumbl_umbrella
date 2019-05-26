@@ -9,6 +9,16 @@
 # move said applications out of the umbrella.
 use Mix.Config
 
+# By default, the umbrella project as well as each child
+# application will require this configuration file, as
+# configuration and dependencies are shared in an umbrella
+# project. While one could configure all applications here,
+# we prefer to keep the configuration of each individual
+# child application in their own app, but all other
+# dependencies, regardless if they belong to one or multiple
+# apps, should be configured in the umbrella to avoid confusion.
+import_config "../apps/*/config/config.exs"
+
 # Configure Mix tasks and generators
 config :rumbl,
   ecto_repos: [Rumbl.Repo]
@@ -35,3 +45,4 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+#import_config "dev.secret.exs"
